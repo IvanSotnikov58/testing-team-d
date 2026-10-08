@@ -7,7 +7,7 @@ test('REQ-01 restock adds quantity to existing sku', () => {
 });
 
 // functional 2
-test('REQ-02 restock tagastab UUE objekti, originaal ei muutu', () => {
+test('REQ-02 restock returns a NEW object, the original remains unchanged', () => {
   const stock = { 'A-1': 5 };
   const result = restock(stock, [{ sku: 'A-1', qty: 3 }]);
   expect(result).not.toBe(stock);
@@ -15,27 +15,27 @@ test('REQ-02 restock tagastab UUE objekti, originaal ei muutu', () => {
 });
 
 // functional 3
-test('REQ-03 restock  qty peab olema positiivne täisarv, muidu viga (qty=1)', () => { 
+test('REQ-03 restock  rqty must be a positive integer, otherwise error (qty=1)', () => { 
   const stock = { 'A-1': 5 };
   const result = restock(stock, [{ sku: 'A-1', qty: 1 }]); 
   expect(result).toEqual({ 'A-1': 6 }); });
 
   // functional 4
-test('REQ-03 restock  qty peab olema positiivne täisarv, muidu viga (qty=0)', () => { 
+test('REQ-03 restock  qty must be a positive integer, otherwise error (qty=0)', () => { 
   const stock = { 'A-1': 5 }; 
   expect(() => { restock(stock, [{ sku: 'A-1', qty: 0 }]);
   }).toThrow(); 
 });
 
   // functional 5
-test('REQ-03 restock  qty peab olema positiivne täisarv, muidu viga (qty=2.5)', () => { 
+test('REQ-03 restock  rqty must be a positive integer, otherwise error (qty=2.5)', () => { 
   const stock = { 'A-1': 5 }; 
   expect(() => { restock(stock, [{ sku: 'A-1', qty: 2.5 }]);
   }).toThrow(); 
 });
 
   // functional 6
-test('REQ-03 restock  qty peab olema positiivne täisarv, muidu viga (qty=-1)', () => { 
+test('REQ-03 restock  qty must be a positive integer, otherwise error (qty=-1)', () => { 
   const stock = { 'A-1': 5 }; 
   expect(() => { restock(stock, [{ sku: 'A-1', qty: -1 }]);
   }).toThrow(); 
@@ -49,7 +49,7 @@ test('REQ-04 pick returns a new object, original unchanged', () => {
 });
 
 // functional 8
-test('REQ-05 findDuplicateSkus  tagastab sku-d, mis esinevad rohkem kui üks kord, iga üks kord', () => { 
+test('REQ-05 findDuplicateSkus  returns skus that occur more than once, each one time', () => { 
   const items = [ 
     { sku: 'A-1' }, 
     { sku: 'B-1' }, 
@@ -60,14 +60,14 @@ test('REQ-05 findDuplicateSkus  tagastab sku-d, mis esinevad rohkem kui üks kor
 });
 
 // functional 9
-test('REQ-04 pick throws viga "unknown sku"', () => {
+test('REQ-04 pick throws error "unknown sku"', () => {
   const stock = { 'A-1': 5 };
   expect(() => { pick(stock, 'B-1', 2);
   }).toThrow('unknown sku');
 });
 
 // functional 10
-test('REQ-04 pick throws viga "not enough stock"', () => {
+test('REQ-04 pick throws error "not enough stock"', () => {
   const stock = { 'A-1': 5 };
   expect(() => { pick(stock, 'A-1', 6);
   }).toThrow('not enough stock');
