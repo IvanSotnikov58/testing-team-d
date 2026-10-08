@@ -1,0 +1,27 @@
+{
+  "name": "testing-team-d",
+  "version": "1.0.0",
+  "description": "",
+  "main": "inventory.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanSotnikov58/testing-team-d.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/IvanSotnikov58/testing-team-d/issues"
+  },
+  "homepage": "https://github.com/IvanSotnikov58/testing-team-d#readme",
+  "devDependencies": {
+    "jest": "^30.5.2"
+  }
+}
